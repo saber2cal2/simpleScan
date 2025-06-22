@@ -1,0 +1,2 @@
+# simpleScan
+Nmap simpleScan 
