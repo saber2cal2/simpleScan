@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Simple Targeted Nmap Scan Script
+# Usage: ./simple_scan.sh <target-ip>
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <target-ip>"
+    exit 1
+fi
+# This checks that exactly one argument (the target IP or hostname) is passed.
+
+# $# = number of arguments.
+
+# $0 = script name, used in the usage message.
+
+# If no argument is given or too many are provided, it prints a usage hint and exits.
+
+TARGET=$1
+# Assigns the first argument ($1) to a variable named TARGET.
+
+echo "[*] Scanning Target Now!  $TARGET ..."
+#Displays a status message to the user.
+
+nmap -sV -p- $TARGET -oN simple_scan_$TARGET.txt
+# -sV: Detect service versions.
+
+# -p-: Scan all 65535 TCP ports (instead of just the default 1000).
+
+# $TARGET: The IP or hostname passed to the script.
+
+# -oN simple_scan_$TARGET.txt: Save results in normal output format to a file like simple_scan_192.168.1.10.txt.
+
+echo "[*] Scan completed! Output saved to simple_scan_$TARGET.txt"
+# Notifies the user that the scan is complete and where the results were saved.
+
+# Examlpe Usage ./simple_scan.sh 192.168.0.101
